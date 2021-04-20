@@ -57,7 +57,6 @@ public class EmailTest {
 	public void testAddHeader() throws Exception{
 		email.addHeader(testValidChars[0], testValidChars[4]);
 		
-		email.addHeader(testNull, testValidChars[2]);
 	}
 
 	@Test
@@ -119,7 +118,7 @@ public class EmailTest {
 	@Test
 	public void testGetSentDate() throws Exception{
 		email.setSentDate(null);
-		Date sentDate = (Date) email.getSentDate();
+		Date sentDate = email.getSentDate();
 		
 	}
 
