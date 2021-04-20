@@ -1,4 +1,5 @@
 language: java
 jdk:
 - oraclejdk11
-script: "mvn test -B"
+script:
+- "mvn clean package"
