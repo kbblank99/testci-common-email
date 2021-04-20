@@ -48,16 +48,24 @@ public class EmailTest {
 
 	@Test
 	public void testAddCc() throws Exception{
-		email.addCc(TEST_EMAIL[1]);
+		for(final String emailAddress : TEST_EMAILS) {
+			email.addCc(emailAddress);
+			
+		}
 		
 		assertEquals(3, email.getCcAddresses().size());
 	}
 
-	@Test
-	public void testAddHeader() throws Exception{
-		email.addHeader(testValidChars[0], testValidChars[4]);
-		
-	}
+	@Test(expected = IllegalArgumentException.class)
+     public void testAddHeaderEmptyName() throws Exception
+	     {
+	        email.addHeader("", "testing");
+     }
+	@Test(expected = IllegalArgumentException.class)
+    public void testAddHeaderEmptyValue() throws Exception
+	     {
+	        email.addHeader("Test", "");
+		 }
 
 	@Test
 	public void testAddReplyTo() throws Exception{
@@ -116,11 +124,14 @@ public class EmailTest {
 	}
 
 	@Test
-	public void testGetSentDate() throws Exception{
-		email.setSentDate(null);
-		Date sentDate = email.getSentDate();
-		
+	public void testGetSetSentDate() {
+		 Date date = Calendar.getInstance().getTime();
+
+		 email.setSentDate(date);
+
+         assertEquals(date, email.getSentDate());
 	}
+
 
 	@Test
 	public void getSocketConnectionTimeout() {
