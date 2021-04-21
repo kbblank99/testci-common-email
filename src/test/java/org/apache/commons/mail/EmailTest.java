@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Calendar;
 import java.util.Properties;
 
@@ -48,7 +48,7 @@ public class EmailTest {
 
 	@Test
 	public void testAddCc() throws Exception{
-		for(final String emailAddress : TEST_EMAILS) {
+		for(final String emailAddress : TEST_EMAIL) {
 			email.addCc(emailAddress);
 			
 		}
